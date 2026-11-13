@@ -66,7 +66,7 @@ function Login() {
           <p className="text-[11px] font-semibold tracking-[0.22em] text-sun uppercase">
             Solar Energy Has Changed The World
           </p>
-          <p className="mt-2 text-xs text-primary-foreground/70">Powering homes &amp; businesses across Zimbabwe</p>
+          <p className="mt-2 text-xs font-medium text-primary-foreground/90">Powering homes &amp; businesses across Zimbabwe</p>
         </div>
       </form>
     </Phone>

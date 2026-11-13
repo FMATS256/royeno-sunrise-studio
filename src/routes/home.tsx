@@ -84,12 +84,12 @@ function HomePage() {
             <Link
               key={label}
               to={to}
-              className={`${i < 3 ? "col-span-2" : "col-span-3"} flex items-center gap-2.5 rounded-2xl border bg-card p-3 text-left shadow-card transition hover:-translate-y-0.5 hover:border-primary/25 active:translate-y-0`}
+              className={`${i < 3 ? "col-span-2" : "col-span-3"} flex items-center gap-2 rounded-2xl border bg-card px-2.5 py-3 text-left shadow-card transition hover:-translate-y-0.5 hover:border-primary/25 active:translate-y-0`}
             >
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent text-primary">
                 <Icon className="h-5 w-5" />
               </span>
-              <span className="text-[11px] leading-tight font-bold text-primary">{label}</span>
+              <span className="min-w-0 flex-1 text-[11px] leading-tight font-bold text-primary">{label}</span>
             </Link>
           ))}
         </div>

@@ -28,7 +28,7 @@ function Splash() {
       <div className="bg-navy-deep relative flex flex-1 flex-col overflow-hidden">
         {/* sun rays + glow behind the mark */}
         <div className="rays pointer-events-none absolute inset-0 opacity-40" />
-        <div className="pointer-events-none absolute inset-x-0 top-12 h-64 bg-[image:var(--glow-sun)] opacity-80" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[image:var(--glow-sun)] opacity-70" />
         <div className="panel-grid pointer-events-none absolute inset-x-0 bottom-0 h-56 opacity-20" />
         <div className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-secondary/30 blur-3xl" />
 
@@ -55,7 +55,7 @@ function Splash() {
           <div className="h-1.5 overflow-hidden rounded-full bg-primary-foreground/15">
             <div className="animate-rise-bar h-full rounded-full bg-sun" />
           </div>
-          <div className="mt-4 flex items-center justify-between text-[11px] font-medium text-primary-foreground/75">
+          <div className="mt-4 flex items-center justify-between text-[11px] font-semibold text-primary-foreground/90">
             <span>Powering Zimbabwe</span>
             <span>Loading…</span>
           </div>
