@@ -12,6 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { InputHTMLAttributes, ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 
 /**
  * Phone frame: a full-bleed app on small screens, a device mock-up on desktop.
@@ -25,12 +26,12 @@ export function Phone({
   statusTone?: "light" | "dark";
 }) {
   const tone =
-    statusTone === "light" ? "text-primary-foreground drop-shadow-[0_1px_2px_rgb(0_0_0/0.4)]" : "text-foreground";
+    statusTone === "light" ? "bg-primary text-primary-foreground" : "bg-background text-foreground";
   return (
-    <div className="min-h-screen bg-muted sm:grid sm:place-items-center sm:py-10">
+    <div className="phone-stage bg-muted sm:grid sm:place-items-center sm:py-10">
       <div
         data-device
-        className="relative mx-auto flex min-h-screen w-full max-w-[420px] flex-col overflow-hidden bg-background sm:min-h-[880px] sm:rounded-[2.9rem] sm:border-[9px] sm:border-foreground/90 sm:shadow-lift"
+        className="phone-shell relative mx-auto flex min-w-0 w-full flex-col bg-background sm:max-w-[420px] sm:rounded-[2.9rem] sm:border-[9px] sm:border-foreground/90 sm:shadow-lift"
       >
         <div className="pointer-events-none absolute left-1/2 top-2.5 z-50 hidden h-5 w-20 -translate-x-1/2 rounded-full bg-foreground/90 sm:block" />
         <div className={`hidden items-center justify-between px-6 pt-4 pb-1 text-[11px] font-semibold tracking-wide sm:flex ${tone}`}>
@@ -50,16 +51,15 @@ export function Phone({
 export function TopBar({ title, subtitle }: { title: string; subtitle?: string }) {
   const router = useRouter();
   return (
-    <header className="bg-navy relative overflow-hidden px-5 pb-5 pt-5 text-primary-foreground">
-      <div className="pointer-events-none absolute -top-16 -right-10 h-40 w-40 rounded-full bg-sun/25 blur-2xl" />
-      <div className="relative flex items-center gap-3">
-        <button
+    <header className="app-topbar bg-navy relative px-5 pb-5 pt-5 text-primary-foreground">
+      <div className="relative grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3">
+        <Button variant="ghost" size="icon"
           aria-label="Back"
           onClick={() => router.history.back()}
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary-foreground/15 transition hover:bg-primary-foreground/25 active:scale-95"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary-foreground/15 text-primary-foreground transition hover:bg-primary-foreground/25 hover:text-primary-foreground active:scale-95"
         >
           <ArrowLeft className="h-4.5 w-4.5" />
-        </button>
+        </Button>
         <div className="min-w-0">
           <h1 className="truncate text-lg font-bold tracking-tight">{title}</h1>
           {subtitle && <p className="truncate text-xs text-primary-foreground/70">{subtitle}</p>}
@@ -80,14 +80,15 @@ const nav = [
 export function BottomNav() {
   const path = useRouterState({ select: (r) => r.location.pathname });
   return (
-    <nav className="mx-3 mt-auto mb-3 grid grid-cols-5 rounded-full border bg-card/95 px-1.5 py-1.5 shadow-lift backdrop-blur">
+    <nav aria-label="Main navigation" className="app-bottom-nav sticky bottom-0 z-40 mt-auto grid shrink-0 grid-cols-5 border-t bg-card/95 px-2 pt-2 shadow-lift backdrop-blur">
       {nav.map(({ to, label, icon: Icon }) => {
         const active = path === to;
         return (
           <Link
             key={to}
             to={to}
-            className={`relative flex flex-col items-center gap-0.5 rounded-full py-1.5 text-[10px] font-medium transition ${
+            aria-current={active ? "page" : undefined}
+            className={`relative flex min-h-12 min-w-0 flex-col items-center justify-center gap-1 rounded-xl py-1.5 text-[10px] font-medium transition ${
               active ? "bg-navy font-bold text-primary-foreground shadow-card" : "text-muted-foreground hover:text-primary"
             }`}
           >
@@ -124,13 +125,13 @@ export function PrimaryBtn({
     green: "bg-success text-success-foreground shadow-card",
   }[variant];
   return (
-    <button
+    <Button
       type={type}
       onClick={onClick}
-      className={`flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-bold tracking-wide transition hover:brightness-110 active:scale-[0.98] ${v} ${className}`}
+      className={`flex h-auto min-h-12 w-full items-center justify-center gap-2 whitespace-normal rounded-xl px-4 py-3.5 text-sm font-bold transition hover:brightness-110 active:scale-[0.98] ${v} ${className}`}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 
@@ -149,8 +150,8 @@ export function Field({
 
 export function SectionTitle({ children, action }: { children: ReactNode; action?: ReactNode }) {
   return (
-    <div className="flex items-end justify-between">
-      <h2 className="text-base font-bold tracking-tight">{children}</h2>
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
+      <h2 className="min-w-0 text-base font-bold">{children}</h2>
       {action}
     </div>
   );

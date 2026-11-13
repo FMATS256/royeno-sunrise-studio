@@ -44,13 +44,12 @@ const packages = servicePackages.filter((pkg) => pkg.category === "Solar");
 function HomePage() {
   return (
     <Phone>
-      <header className="bg-navy relative overflow-hidden px-5 pt-4 pb-16 text-primary-foreground">
-        <div className="pointer-events-none absolute -top-14 -right-12 h-44 w-44 rounded-full bg-sun/25 blur-2xl" />
-        <div className="relative flex items-center justify-between">
+      <header className="bg-navy relative px-5 pt-4 pb-16 text-primary-foreground">
+        <div className="relative grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4">
           <button aria-label="Menu" className="grid h-9 w-9 place-items-center rounded-full bg-primary-foreground/15 transition hover:bg-primary-foreground/25">
             <Menu className="h-5 w-5" />
           </button>
-          <img src={lockup.url} alt="Royeno Solartech" className="h-9 w-auto object-contain" />
+          <img src={lockup.url} alt="Royeno Solartech" className="h-10 w-full min-w-0 object-contain" />
           <Link to="/notifications" aria-label="Notifications" className="relative grid h-9 w-9 place-items-center rounded-full bg-primary-foreground/15 transition hover:bg-primary-foreground/25">
             <Bell className="h-5 w-5" />
             <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-secondary ring-2 ring-primary" />
@@ -80,17 +79,17 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-6 gap-2.5">
+        <div className="mt-4 grid grid-cols-2 gap-2.5">
           {actions.map(({ to, label, icon: Icon }, i) => (
             <Link
               key={label}
               to={to}
-              className={`${i < 3 ? "col-span-2" : "col-span-3"} flex items-center gap-2 rounded-2xl border bg-card px-2.5 py-3 text-left shadow-card transition hover:-translate-y-0.5 hover:border-primary/25 active:translate-y-0`}
+              className={`${i === actions.length - 1 ? "col-span-2" : ""} grid min-h-16 min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-xl border bg-card px-3 py-3 text-left shadow-card transition hover:-translate-y-0.5 hover:border-primary/25 active:translate-y-0`}
             >
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent text-primary">
                 <Icon className="h-5 w-5" />
               </span>
-              <span className="min-w-0 flex-1 text-[11px] leading-tight font-bold text-primary">{label}</span>
+              <span className="min-w-0 text-xs leading-snug font-bold text-primary">{label}</span>
             </Link>
           ))}
         </div>

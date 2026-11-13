@@ -32,3 +32,4 @@ use the editor.
 - Keep service package names, categories and demo prices in the shared browser-safe catalog so home, products and quotations agree.
 - Represent unprovided package prices as null and request an enquiry rather than inventing a numeric quote.
 - Keep home-screen installation manifest-only with start_url `/` so launching shows splash before login; no app-shell service worker unless offline support is requested.
+- Keep viewport sizing, safe-area spacing and sticky navigation in the shared Phone shell so all screens adapt consistently without fixed mobile heights.

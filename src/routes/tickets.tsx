@@ -29,10 +29,10 @@ function Tickets() {
     <Phone>
       <TopBar title="My Service Tickets" subtitle="1 open ticket" />
       <div className="flex-1 px-5 py-5">
-        <div className="rounded-3xl border bg-card p-5 shadow-card">
-          <div className="flex items-start justify-between gap-3">
+        <div className="rounded-2xl border bg-card p-4 shadow-card">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-2">
             <div className="min-w-0">
-              <p className="text-base font-bold tracking-tight">#RST-2025-00124</p>
+              <p className="break-all text-sm font-bold">#RST-2025-00124</p>
               <p className="text-sm text-muted-foreground">Inverter issue</p>
               <p className="mt-1 text-[11px] text-muted-foreground">Submitted: 24 Apr 2025</p>
             </div>
