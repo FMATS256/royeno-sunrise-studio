@@ -50,13 +50,13 @@ function Products() {
           />
         </label>
 
-        <div className="mt-4 flex flex-wrap gap-1">
+        <div className="no-scrollbar mt-4 flex gap-1 overflow-x-auto pb-1" aria-label="Product category">
           {cats.map((c) => (
             <Button variant={cat === c ? "default" : "ghost"} size="sm"
               key={c}
               onClick={() => setCat(c)}
               aria-pressed={cat === c}
-              className={`rounded-full py-2 text-xs font-bold transition ${
+              className={`min-h-11 shrink-0 rounded-xl px-3 py-2 text-xs font-bold transition ${
                 cat === c ? "bg-navy text-primary-foreground shadow-card" : "text-muted-foreground hover:text-primary"
               }`}
             >
@@ -68,22 +68,22 @@ function Products() {
         <div className="mt-4 space-y-3.5">
           {(cat === "All" || cat === "Solar" || cat === "Borehole" || cat === "Starlink") && <PackageCatalog category={cat === "All" ? undefined : cat} query={q} />}
           {list.map((p) => (
-            <div key={p.name} className="flex gap-3.5 rounded-3xl border bg-card p-3 shadow-card">
-              <img src={p.img} alt={p.name} loading="lazy" className="h-28 w-24 shrink-0 rounded-2xl object-cover" />
+            <div key={p.name} className="grid grid-cols-[72px_minmax(0,1fr)] gap-3 rounded-xl border bg-card p-3 shadow-card min-[375px]:grid-cols-[88px_minmax(0,1fr)]">
+              <img src={p.img} alt={p.name} loading="lazy" className="aspect-square w-full rounded-lg object-cover" />
               <div className="flex min-w-0 flex-1 flex-col">
-                <p className="truncate text-sm font-bold">{p.name}</p>
+                <p className="text-sm font-bold leading-snug">{p.name}</p>
                 <p className="text-[11px] text-muted-foreground">{p.sub}</p>
                 <p className="mt-1 text-lg font-bold text-primary">${p.price.toLocaleString()}</p>
                 <p className="flex items-center gap-1 text-[11px] text-muted-foreground">
                   <Star className="h-3.5 w-3.5 fill-sun text-sun" />
                   {p.rating}
                 </p>
-                <button
+                <Button variant="secondary"
                   onClick={() => toast.success(`${p.name} added to enquiry`)}
-                  className="bg-sun mt-auto rounded-xl py-2 text-xs font-bold text-secondary-foreground shadow-sun transition hover:brightness-110 active:scale-[0.98]"
+                  className="mt-2 h-auto min-h-11 whitespace-normal rounded-lg py-2 text-xs font-bold shadow-sun"
                 >
                   Add to Enquiry
-                </button>
+                </Button>
               </div>
             </div>
           ))}

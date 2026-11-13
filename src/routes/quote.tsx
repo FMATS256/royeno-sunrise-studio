@@ -66,7 +66,7 @@ function Quote() {
               setCategory(cat);
               const first = servicePackages.find((pkg) => pkg.category === cat);
               if (first) setSel(first.id);
-            }} className="gap-1 px-1 text-xs"><CategoryIcon />{cat}</Button>;
+            }} className="min-h-11 min-w-0 gap-1 px-1 text-xs"><CategoryIcon />{cat}</Button>;
           })}
         </div>
         <h2 className="mt-5 text-sm font-bold tracking-tight">Select Package</h2>
@@ -101,11 +101,11 @@ function Quote() {
 
         {category === "Solar" && <>
         <h2 className="mt-6 text-sm font-bold tracking-tight">Battery Option</h2>
-        <div className="mt-2 flex flex-wrap items-center justify-between gap-3 rounded-2xl border bg-card px-4 py-3.5 shadow-card">
-          <span className="text-sm font-semibold">
-            Lithium Battery <span className="font-normal text-muted-foreground">(Recommended)</span>
+        <div className="mt-2 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-xl border bg-card px-4 py-3.5 shadow-card">
+          <span className="min-w-0 text-sm font-semibold">
+            Lithium Battery <span className="block text-xs font-normal text-muted-foreground">Recommended</span>
           </span>
-          <span className="flex items-center gap-3">
+          <span className="flex shrink-0 items-center gap-2">
             <span className="text-sm font-bold text-primary">+ $200</span>
             <Switch aria-label="Toggle battery" checked={battery} onCheckedChange={setBattery} />
           </span>
@@ -123,23 +123,23 @@ function Quote() {
               key={l as string}
               onClick={() => setInstall(v as boolean)}
               aria-pressed={install === v}
-              className={`flex h-auto w-full items-center gap-3 rounded-2xl border px-4 py-3 text-sm transition ${
+              className={`grid h-auto min-h-12 w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 whitespace-normal rounded-xl border px-4 py-3 text-sm transition ${
                 install === v ? "border-primary/35 bg-accent font-semibold" : "border-border bg-card hover:border-primary/20"
               }`}
             >
               <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 ${install === v ? "border-primary" : "border-border"}`}>
                 {install === v && <span className="h-2.5 w-2.5 rounded-full bg-primary" />}
               </span>
-              <span className="flex-1 text-left">{l as string}</span>
+              <span className="min-w-0 text-left">{l as string}</span>
               <span className="font-bold text-primary">{p as string}</span>
             </Button>
           ))}
         </div>
 
         </>}
-        <div className="mt-6 flex flex-wrap gap-2 items-center justify-between rounded-2xl bg-navy px-4 py-4 text-primary-foreground shadow-lift">
+        <div className="mt-6 grid grid-cols-[minmax(0,1fr)_auto] gap-3 items-center rounded-xl bg-navy px-4 py-4 text-primary-foreground shadow-lift">
           <span className="text-xs font-semibold uppercase">{total === null ? "Quotation" : "Estimated total"}</span>
-          <span className="text-xl font-bold">{total === null ? "Price on request" : `$${total.toLocaleString()}`}</span>
+          <span className="text-right text-lg font-bold">{total === null ? "Price on request" : `$${total.toLocaleString()}`}</span>
         </div>
         <div className="mt-4">
           <PrimaryBtn variant="orange" onClick={() => toast.success(total === null ? `${selected?.name ?? "Package"} added to enquiry` : `Quote sent: $${total.toLocaleString()}`)}>
