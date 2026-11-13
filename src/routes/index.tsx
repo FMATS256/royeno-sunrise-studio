@@ -11,6 +11,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Solar Energy Has Changed The World. Quotes, installs and support from Royeno Solartech." },
       { property: "og:title", content: "Royeno Solartech" },
       { property: "og:description", content: "Solar Energy Has Changed The World" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Splash,
@@ -19,7 +21,7 @@ export const Route = createFileRoute("/")({
 function Splash() {
   const navigate = useNavigate();
   useEffect(() => {
-    const t = setTimeout(() => navigate({ to: "/login" }), 2600);
+    const t = setTimeout(() => navigate({ to: "/login", replace: true }), 2600);
     return () => clearTimeout(t);
   }, [navigate]);
 

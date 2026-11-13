@@ -10,6 +10,8 @@ export const Route = createFileRoute("/login")({
       { name: "description", content: "Sign in to access your Royeno Solartech solar services." },
       { property: "og:title", content: "Sign In — Royeno Solartech" },
       { property: "og:description", content: "Access your solar services." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Login,
@@ -27,8 +29,8 @@ function Login() {
         className="flex flex-1 flex-col px-6 pt-8"
       >
         <img src={lockup.url} alt="Royeno Solartech" className="mx-auto w-48 object-contain" />
-        <h1 className="mt-7 text-center text-2xl font-bold tracking-tight">Welcome Back!</h1>
-        <p className="mt-1 text-center text-sm text-muted-foreground">Sign in to access your solar services</p>
+        <h1 className="mt-7 text-center text-2xl font-bold tracking-tight">Client Sign In</h1>
+        <p className="mt-1 text-center text-sm text-muted-foreground">Welcome back to Royeno Solartech</p>
 
         <div className="mt-8 space-y-3">
           <Field icon={User} placeholder="Mobile Number or Email" autoComplete="username" />
