@@ -28,7 +28,10 @@ export function Phone({
     statusTone === "light" ? "text-primary-foreground drop-shadow-[0_1px_2px_rgb(0_0_0/0.4)]" : "text-foreground";
   return (
     <div className="min-h-screen bg-muted sm:grid sm:place-items-center sm:py-10">
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[420px] flex-col overflow-hidden bg-background sm:min-h-[880px] sm:rounded-[2.9rem] sm:border-[9px] sm:border-foreground/90 sm:shadow-lift">
+      <div
+        data-device
+        className="relative mx-auto flex min-h-screen w-full max-w-[420px] flex-col overflow-hidden bg-background sm:min-h-[880px] sm:rounded-[2.9rem] sm:border-[9px] sm:border-foreground/90 sm:shadow-lift"
+      >
         <div className="pointer-events-none absolute left-1/2 top-2.5 z-50 hidden h-5 w-20 -translate-x-1/2 rounded-full bg-foreground/90 sm:block" />
         <div className={`hidden items-center justify-between px-6 pt-4 pb-1 text-[11px] font-semibold tracking-wide sm:flex ${tone}`}>
           <span>9:41</span>
