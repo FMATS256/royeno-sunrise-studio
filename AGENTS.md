@@ -31,3 +31,4 @@ use the editor.
 
 - Keep service package names, categories and demo prices in the shared browser-safe catalog so home, products and quotations agree.
 - Represent unprovided package prices as null and request an enquiry rather than inventing a numeric quote.
+- Keep home-screen installation manifest-only with start_url `/` so launching shows splash before login; no app-shell service worker unless offline support is requested.
