@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "1876118d-3b9a-4585-937f-cdf3032612ef",
-  "project_id": "3042346a-7ebc-4ea8-90af-22244a86937b",
-  "url": "/__l5e/assets-v1/1876118d-3b9a-4585-937f-cdf3032612ef/royeno-logo.png",
-  "r2_key": "a/v1/3042346a-7ebc-4ea8-90af-22244a86937b/1876118d-3b9a-4585-937f-cdf3032612ef/royeno-logo.png",
-  "original_filename": "royeno-logo.png",
-  "size": 4197,
   "content_type": "image/png",
-  "created_at": "2026-11-13T05:08:01Z"
+  "created_at": "2026-11-13T05:08:01Z",
+  "original_filename": "royeno-logo.png",
+  "project_id": "eee4f8ec-7217-4d26-8728-f71593782e44",
+  "r2_key": "a/v1/eee4f8ec-7217-4d26-8728-f71593782e44/1876118d-3b9a-4585-937f-cdf3032612ef/royeno-logo.png",
+  "size": 4197,
+  "url": "/__l5e/assets-v1/1876118d-3b9a-4585-937f-cdf3032612ef/royeno-logo.png",
+  "version": 1
 }
