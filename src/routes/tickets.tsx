@@ -14,10 +14,10 @@ export const Route = createFileRoute("/tickets")({
   component: Tickets,
 });
 
-const steps: [string, string, "done" | "ok" | "now" | "todo"][] = [
+const steps: [string, string, "done" | "now" | "todo"][] = [
   ["Submitted", "24 Apr, 09:30 AM", "done"],
   ["Under Review", "24 Apr, 10:15 AM", "done"],
-  ["Technician Assigned", "24 Apr, 11:00 AM", "ok"],
+  ["Technician Assigned", "24 Apr, 11:00 AM", "done"],
   ["In Progress", "24 Apr, 02:15 PM", "now"],
   ["Resolved", "", "todo"],
 ];
@@ -34,7 +34,7 @@ function Tickets() {
               <p className="text-sm text-muted-foreground">Inverter issue</p>
               <p className="mt-1 text-[11px] text-muted-foreground">Submitted: 24 Apr 2025</p>
             </div>
-            <span className="shrink-0 rounded-full bg-secondary/12 px-3 py-1 text-[11px] font-bold text-secondary">In Progress</span>
+            <span className="bg-sun shrink-0 rounded-full px-3 py-1 text-[11px] font-bold text-secondary-foreground">In Progress</span>
           </div>
 
           <ol className="mt-5">
@@ -47,14 +47,12 @@ function Tickets() {
                   className={`z-10 grid h-6 w-6 shrink-0 place-items-center rounded-full transition ${
                     s === "done"
                       ? "bg-primary text-primary-foreground"
-                      : s === "ok"
-                        ? "bg-success text-success-foreground"
-                        : s === "now"
-                          ? "bg-sun text-secondary-foreground ring-4 ring-secondary/25"
-                          : "border-2 border-border bg-card"
+                      : s === "now"
+                        ? "bg-sun text-secondary-foreground ring-4 ring-secondary/25"
+                        : "border-2 border-border bg-card"
                   }`}
                 >
-                  {(s === "done" || s === "ok") && <Check className="h-3.5 w-3.5" />}
+                  {s === "done" && <Check className="h-3.5 w-3.5" />}
                 </span>
                 <div className="min-w-0">
                   <p className={`text-sm ${s === "now" ? "font-bold text-primary" : "font-semibold"}`}>{t}</p>

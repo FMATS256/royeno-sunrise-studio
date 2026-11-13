@@ -18,8 +18,8 @@ export const Route = createFileRoute("/notifications")({
 const all = [
   { t: "Black Friday Solar Deals!", d: "Get up to 30% OFF on selected solar systems.", time: "2h ago", icon: Gift, tone: "bg-sun text-secondary-foreground", tab: "Promotions", unread: true },
   { t: "Installation Scheduled", d: "Your installation is confirmed for 28 Apr 2025.", time: "1d ago", icon: CalendarCheck, tone: "bg-navy text-primary-foreground", tab: "Updates", unread: true },
-  { t: "Service Update", d: "Our teams will be in Harare this week for maintenance.", time: "2d ago", icon: Wrench, tone: "bg-secondary/15 text-secondary", tab: "Updates", unread: false },
-  { t: "New Product", d: "Introducing the new LiFePO4 battery range.", time: "3d ago", icon: Package, tone: "bg-success/15 text-success", tab: "Promotions", unread: false },
+  { t: "Service Update", d: "Our teams will be in Harare this week for maintenance.", time: "2d ago", icon: Wrench, tone: "bg-secondary text-secondary-foreground", tab: "Updates", unread: false },
+  { t: "New Product", d: "Introducing the new LiFePO4 battery range.", time: "3d ago", icon: Package, tone: "bg-success text-success-foreground", tab: "Promotions", unread: false },
 ];
 
 const tabs = ["All", "Promotions", "Updates"];

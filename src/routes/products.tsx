@@ -44,14 +44,14 @@ function Products() {
           />
         </label>
 
-        <div className="no-scrollbar mt-4 flex gap-2 overflow-x-auto">
+        <div className="mt-4 flex rounded-full border bg-card p-1 shadow-card">
           {cats.map((c) => (
             <button
               key={c}
               onClick={() => setCat(c)}
               aria-pressed={cat === c}
-              className={`shrink-0 rounded-full px-4 py-1.5 text-xs font-bold transition ${
-                cat === c ? "bg-navy text-primary-foreground shadow-card" : "border bg-card text-muted-foreground hover:border-primary/25 hover:text-primary"
+              className={`flex-1 rounded-full py-2 text-xs font-bold transition ${
+                cat === c ? "bg-navy text-primary-foreground shadow-card" : "text-muted-foreground hover:text-primary"
               }`}
             >
               {c}
