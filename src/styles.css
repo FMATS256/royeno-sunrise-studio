@@ -1,9 +1,7 @@
 /*
  * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
- * - Keep every @import in this top block, above @theme and the rest of the file. Install an
- *   npm package before @importing its CSS. Never @import a remote URL (web fonts, CDN CSS): the
- *   build resolves @import from the filesystem. Load those with a <link> in the head() of
- *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
+ * - Keep every @import in this top block, above @theme and the rest of the file.
+ * - Never @import a remote URL: load web fonts with a <link> in src/routes/__root.tsx.
  */
 @import "tailwindcss" source(none);
 @source "../src";
@@ -12,21 +10,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The design lives in this file: oklch color tokens on the shadcn variables
- * (--background, --foreground, --primary, --secondary, --muted, --accent, ...) plus
- * new tokens as needed, font tokens, and custom styles and animations.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Royeno Solartech design system.
+ * Brand: deep solar blue + bright orange, from the logo (blue #0A3B82, orange #F26818).
+ * All colors MUST use oklch.
  */
 
 @theme inline {
@@ -64,6 +50,10 @@
   --color-chart-5: var(--chart-5);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+  --color-sun: var(--sun);
+  --color-sun-foreground: var(--sun-foreground);
+  --color-sky: var(--sky);
+  --color-sky-foreground: var(--sky-foreground);
   --font-sans: "Outfit", system-ui, sans-serif;
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -73,35 +63,62 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.5s ease-out both;
+  --animate-pop: pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-glow: glow 3.2s ease-in-out infinite;
+  --animate-sweep: sweep 2.1s ease-in-out infinite;
+  --animate-rise-bar: rise-bar 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
 :root {
   --radius: 1rem;
-  --background: oklch(0.975 0.008 260);
-  --foreground: oklch(0.22 0.06 265);
+  --background: oklch(0.982 0.006 260);
+  --foreground: oklch(0.24 0.05 265);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.06 265);
+  --card-foreground: oklch(0.24 0.05 265);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.06 265);
-  --primary: oklch(0.36 0.15 265);
+  --popover-foreground: oklch(0.24 0.05 265);
+  --primary: oklch(0.38 0.13 262);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.72 0.18 50);
+  --secondary: oklch(0.66 0.19 46);
   --secondary-foreground: oklch(0.99 0 0);
-  --muted: oklch(0.95 0.015 260);
-  --muted-foreground: oklch(0.5 0.04 260);
-  --accent: oklch(0.94 0.03 260);
-  --accent-foreground: oklch(0.36 0.15 265);
-  --success: oklch(0.6 0.16 150);
+  --muted: oklch(0.962 0.008 260);
+  --muted-foreground: oklch(0.52 0.035 262);
+  --accent: oklch(0.951 0.022 250);
+  --accent-foreground: oklch(0.38 0.13 262);
+  --success: oklch(0.6 0.15 152);
   --success-foreground: oklch(0.99 0 0);
-  --destructive: oklch(0.58 0.22 27);
+  --sun: oklch(0.8 0.15 78);
+  --sun-foreground: oklch(0.28 0.06 265);
+  --sky: oklch(0.62 0.11 240);
+  --sky-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.58 0.21 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.91 0.015 260);
-  --input: oklch(0.91 0.015 260);
-  --ring: oklch(0.36 0.15 265);
-  --chart-1: oklch(0.72 0.18 50); --chart-2: oklch(0.36 0.15 265); --chart-3: oklch(0.6 0.16 150); --chart-4: oklch(0.8 0.1 80); --chart-5: oklch(0.5 0.1 230);
-  --sidebar: oklch(1 0 0); --sidebar-foreground: oklch(0.22 0.06 265); --sidebar-primary: oklch(0.36 0.15 265); --sidebar-primary-foreground: oklch(0.99 0 0); --sidebar-accent: oklch(0.94 0.03 260); --sidebar-accent-foreground: oklch(0.36 0.15 265); --sidebar-border: oklch(0.91 0.015 260); --sidebar-ring: oklch(0.36 0.15 265);
-  --gradient-navy: linear-gradient(160deg, oklch(0.42 0.16 262), oklch(0.26 0.12 268));
-  --shadow-card: 0 8px 24px -12px color-mix(in oklab, var(--primary) 30%, transparent);
+  --border: oklch(0.912 0.012 260);
+  --input: oklch(0.912 0.012 260);
+  --ring: oklch(0.38 0.13 262);
+  --chart-1: oklch(0.66 0.19 46);
+  --chart-2: oklch(0.38 0.13 262);
+  --chart-3: oklch(0.6 0.15 152);
+  --chart-4: oklch(0.8 0.15 78);
+  --chart-5: oklch(0.62 0.11 240);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.24 0.05 265);
+  --sidebar-primary: oklch(0.38 0.13 262);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.951 0.022 250);
+  --sidebar-accent-foreground: oklch(0.38 0.13 262);
+  --sidebar-border: oklch(0.912 0.012 260);
+  --sidebar-ring: oklch(0.38 0.13 262);
+
+  --gradient-navy: linear-gradient(158deg, oklch(0.46 0.14 262), oklch(0.28 0.11 268));
+  --gradient-navy-deep: linear-gradient(170deg, oklch(0.44 0.14 262) 0%, oklch(0.26 0.11 268) 52%, oklch(0.19 0.08 268) 100%);
+  --gradient-sun: linear-gradient(135deg, oklch(0.8 0.16 68), oklch(0.64 0.19 42));
+  --glow-sun: radial-gradient(60% 40% at 50% 0%, color-mix(in oklab, var(--sun) 42%, transparent), transparent 72%);
+  --shadow-card: 0 10px 26px -14px color-mix(in oklab, var(--primary) 34%, transparent);
+  --shadow-lift: 0 22px 48px -22px color-mix(in oklab, var(--primary) 48%, transparent);
+  --shadow-sun: 0 12px 28px -12px color-mix(in oklab, var(--secondary) 55%, transparent);
 }
 
 @layer base {
@@ -112,8 +129,119 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-@utility bg-navy { background-image: var(--gradient-navy); }
-@utility shadow-card { box-shadow: var(--shadow-card); }
+@utility bg-navy {
+  background-image: var(--gradient-navy);
+}
+
+@utility bg-navy-deep {
+  background-image: var(--gradient-navy-deep);
+}
+
+@utility bg-sun {
+  background-image: var(--gradient-sun);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility shadow-sun {
+  box-shadow: var(--shadow-sun);
+}
+
+/* Sun rays fanning from the top edge — used behind the splash logo. */
+@utility rays {
+  background-image: repeating-conic-gradient(
+    from 0deg at 50% -6%,
+    color-mix(in oklab, var(--sun) 16%, transparent) 0deg 5deg,
+    transparent 5deg 20deg
+  );
+}
+
+/* Faint solar-panel grid. */
+@utility panel-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--primary-foreground) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--primary-foreground) 12%, transparent) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.07);
+  }
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-110%);
+  }
+  60%,
+  100% {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes rise-bar {
+  0% {
+    width: 6%;
+  }
+  55% {
+    width: 82%;
+  }
+  100% {
+    width: 100%;
+  }
+}
