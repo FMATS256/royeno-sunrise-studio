@@ -4,6 +4,8 @@ import { Search, Star } from "lucide-react";
 import { toast } from "sonner";
 import { BottomNav, Phone, TopBar } from "@/components/AppShell";
 import inverter from "@/assets/inverter.jpg";
+import battery from "@/assets/battery.jpg";
+import panel from "@/assets/panel.jpg";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -18,9 +20,9 @@ export const Route = createFileRoute("/products")({
 });
 
 const items = [
-  { name: "Growatt 5KVA Inverter", sub: "Pure Sine Wave Inverter", price: 650, rating: "4.8 (120)", cat: "Inverters" },
-  { name: "Lithium Battery 5kWh", sub: "Long Life Battery", price: 1200, rating: "4.8 (85)", cat: "Batteries" },
-  { name: "550W Mono Panel", sub: "High Efficiency Panel", price: 180, rating: "4.7 (64)", cat: "Panels" },
+  { name: "Growatt 5KVA Inverter", sub: "Pure Sine Wave Inverter", price: 650, rating: "4.8 (120)", cat: "Inverters", img: inverter },
+  { name: "Lithium Battery 5kWh", sub: "Long Life Battery", price: 1200, rating: "4.8 (85)", cat: "Batteries", img: battery },
+  { name: "550W Mono Panel", sub: "High Efficiency Panel", price: 180, rating: "4.7 (64)", cat: "Panels", img: panel },
 ];
 
 const cats = ["All", "Inverters", "Batteries", "Panels"];
@@ -62,7 +64,7 @@ function Products() {
         <div className="mt-4 space-y-3.5">
           {list.map((p) => (
             <div key={p.name} className="flex gap-3.5 rounded-3xl border bg-card p-3 shadow-card">
-              <img src={inverter} alt={p.name} loading="lazy" className="h-28 w-24 shrink-0 rounded-2xl object-cover" />
+              <img src={p.img} alt={p.name} loading="lazy" className="h-28 w-24 shrink-0 rounded-2xl object-cover" />
               <div className="flex min-w-0 flex-1 flex-col">
                 <p className="truncate text-sm font-bold">{p.name}</p>
                 <p className="text-[11px] text-muted-foreground">{p.sub}</p>
