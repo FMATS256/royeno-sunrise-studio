@@ -1,8 +1,8 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { Phone } from "@/components/AppShell";
-import lockup from "@/assets/royeno-lockup.png.asset.json";
-import mark from "@/assets/royeno-mark.png.asset.json";
+import lockup from "@/assets/royeno-lockup-light.png.asset.json";
+import mark from "@/assets/royeno-mark-light.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,12 +29,12 @@ function Splash() {
         {/* sun rays + glow behind the mark */}
         <div className="rays pointer-events-none absolute inset-0 opacity-40" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[image:var(--glow-sun)]" />
-        <div className="panel-grid pointer-events-none absolute inset-x-0 bottom-0 h-56 opacity-25" />
+        <div className="panel-grid pointer-events-none absolute inset-x-0 bottom-0 h-56 opacity-20" />
         <div className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-secondary/30 blur-3xl" />
 
         <div className="relative flex flex-1 flex-col items-center justify-center px-8 text-center">
           <div className="animate-pop relative">
-            <div className="animate-glow absolute inset-0 -m-6 rounded-full bg-sun/30 blur-2xl" />
+            <div className="animate-glow absolute inset-0 -m-7 rounded-full bg-sun/30 blur-2xl" />
             <img src={mark.url} alt="Royeno Solartech" className="relative h-24 w-24 object-contain" />
           </div>
           <img
