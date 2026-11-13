@@ -46,7 +46,7 @@ function Splash() {
             style={{ animationDelay: "0.18s" }}
           />
           <p
-            className="animate-fade-up mt-7 text-[11px] font-semibold tracking-[0.28em] text-sun uppercase"
+            className="animate-fade-up mt-7 max-w-64 text-sm font-semibold leading-relaxed text-sun"
             style={{ animationDelay: "0.34s" }}
           >
             Solar Energy Has Changed The World

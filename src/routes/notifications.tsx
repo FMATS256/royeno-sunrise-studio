@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CalendarCheck, Gift, Package, Wrench } from "lucide-react";
 import { BottomNav, Phone, TopBar } from "@/components/AppShell";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/notifications")({
   head: () => ({
@@ -34,18 +35,18 @@ function Notifications() {
     <Phone>
       <TopBar title="Notifications" subtitle="Deals, updates and news" />
       <div className="px-5 pt-4">
-        <div className="flex rounded-full border bg-card p-1 shadow-card">
+        <div className="grid grid-cols-3 rounded-xl border bg-card p-1 shadow-card">
           {tabs.map((t) => (
-            <button
+            <Button variant="ghost"
               key={t}
               onClick={() => setTab(t)}
               aria-pressed={tab === t}
-              className={`flex-1 rounded-full py-2 text-xs font-bold transition ${
+              className={`min-h-11 min-w-0 rounded-lg px-1 py-2 text-xs font-bold transition ${
                 tab === t ? "bg-navy text-primary-foreground shadow-card" : "text-muted-foreground hover:text-primary"
               }`}
             >
               {t}
-            </button>
+            </Button>
           ))}
         </div>
       </div>

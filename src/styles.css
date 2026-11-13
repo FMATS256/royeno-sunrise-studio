@@ -130,6 +130,53 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     -webkit-font-smoothing: antialiased;
+    margin: 0;
+    letter-spacing: 0;
+  }
+}
+
+.phone-stage {
+  min-height: 100svh;
+}
+
+.phone-shell {
+  min-height: 100dvh;
+  overflow: clip;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.app-bottom-nav {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+.phone-shell input:not([type="file"]),
+.phone-shell textarea,
+.phone-shell select {
+  font-size: 16px;
+}
+
+.phone-shell input,
+.phone-shell textarea,
+.phone-shell select {
+  scroll-margin-block: 5rem;
+}
+
+.phone-shell .tracking-tight {
+  letter-spacing: 0;
+}
+
+@media (min-width: 640px) {
+  .phone-shell {
+    min-height: 880px;
+    padding-block: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-shell *, .phone-shell *::before, .phone-shell *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

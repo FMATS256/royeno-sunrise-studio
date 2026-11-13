@@ -26,13 +26,13 @@ function Login() {
           e.preventDefault();
           navigate({ to: "/home" });
         }}
-        className="flex flex-1 flex-col px-6 pt-8"
+        className="flex flex-1 flex-col px-5 pt-6 min-[375px]:px-6"
       >
         <img src={lockup.url} alt="Royeno Solartech" className="mx-auto w-48 object-contain" />
         <h1 className="mt-7 text-center text-2xl font-bold tracking-tight">Client Sign In</h1>
         <p className="mt-1 text-center text-sm text-muted-foreground">Welcome back to Royeno Solartech</p>
 
-        <div className="mt-8 space-y-3">
+        <div className="mt-6 space-y-3">
           <Field icon={User} placeholder="Mobile Number or Email" autoComplete="username" />
           <label className="flex items-center gap-3 rounded-2xl border bg-card px-4 py-3.5 transition focus-within:border-primary/45 focus-within:ring-4 focus-within:ring-primary/10">
             <Lock className="h-5 w-5 shrink-0 text-primary" />
@@ -46,7 +46,7 @@ function Login() {
           </label>
         </div>
 
-        <div className="mt-7">
+        <div className="mt-5">
           <PrimaryBtn type="submit">Sign In</PrimaryBtn>
         </div>
         <a className="mt-4 text-center text-sm font-semibold text-primary hover:underline">Forgot Password?</a>
@@ -64,8 +64,8 @@ function Login() {
           Create Account
         </Link>
 
-        <div className="bg-navy -mx-6 mt-auto overflow-hidden px-6 pt-8 pb-9 text-center">
-          <p className="text-[11px] font-semibold tracking-[0.22em] text-sun uppercase">
+        <div className="bg-navy -mx-5 mt-6 px-5 py-6 text-center min-[375px]:-mx-6 min-[375px]:px-6">
+          <p className="text-xs font-semibold leading-relaxed text-sun">
             Solar Energy Has Changed The World
           </p>
           <p className="mt-2 text-xs font-medium text-primary-foreground/90">Powering homes &amp; businesses across Zimbabwe</p>
