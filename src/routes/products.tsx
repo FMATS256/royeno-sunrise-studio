@@ -16,6 +16,8 @@ export const Route = createFileRoute("/products")({
       { name: "description", content: "Inverters, batteries and solar panels." },
       { property: "og:title", content: "Our Products — Royeno Solartech" },
       { property: "og:description", content: "Shop solar equipment." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Products,

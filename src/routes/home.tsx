@@ -24,6 +24,8 @@ export const Route = createFileRoute("/home")({
       { name: "description", content: "Your solar dashboard: quotes, faults, installs and packages." },
       { property: "og:title", content: "Home — Royeno Solartech" },
       { property: "og:description", content: "Your Solar Journey, One App." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: HomePage,
