@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Keep service package names, categories and demo prices in the shared browser-safe catalog so home, products and quotations agree.
+- Represent unprovided package prices as null and request an enquiry rather than inventing a numeric quote.
