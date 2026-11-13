@@ -56,8 +56,7 @@ function HomePage() {
           </Link>
         </div>
         <h1 className="relative mt-5 text-2xl font-bold tracking-tight">Hello, Tendai!</h1>
-        <p className="relative text-sm text-primary-foreground/80">Your Solar Journey, One App.</p>
-        <div className="absolute inset-x-0 -bottom-px h-6 rounded-t-[1.8rem] bg-background" />
+        <p className="relative text-sm text-primary-foreground/85">Your Solar Journey, One App.</p>
       </header>
 
       <div className="relative -mt-10 px-4 pb-4">

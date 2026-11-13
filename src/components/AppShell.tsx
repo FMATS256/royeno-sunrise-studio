@@ -24,7 +24,8 @@ export function Phone({
   children: ReactNode;
   statusTone?: "light" | "dark";
 }) {
-  const tone = statusTone === "light" ? "text-primary-foreground" : "text-foreground";
+  const tone =
+    statusTone === "light" ? "text-primary-foreground drop-shadow-[0_1px_2px_rgb(0_0_0/0.4)]" : "text-foreground";
   return (
     <div className="min-h-screen bg-muted sm:grid sm:place-items-center sm:py-10">
       <div className="relative mx-auto flex min-h-screen w-full max-w-[420px] flex-col overflow-hidden bg-background sm:min-h-[880px] sm:rounded-[2.9rem] sm:border-[9px] sm:border-foreground/90 sm:shadow-lift">
@@ -61,7 +62,6 @@ export function TopBar({ title, subtitle }: { title: string; subtitle?: string }
           {subtitle && <p className="truncate text-xs text-primary-foreground/70">{subtitle}</p>}
         </div>
       </div>
-      <div className="absolute inset-x-0 -bottom-px h-4 rounded-t-[1.6rem] bg-background" />
     </header>
   );
 }
