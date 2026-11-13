@@ -17,6 +17,7 @@ import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as TicketsRouteImport } from './routes/tickets'
+import { Route as PackagePackageIdRouteImport } from './routes/package.$packageId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const TicketsRoute = TicketsRouteImport.update({
   path: '/tickets',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PackagePackageIdRoute = PackagePackageIdRouteImport.update({
+  id: '/package/$packageId',
+  path: '/package/$packageId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/quote': typeof QuoteRoute
   '/tickets': typeof TicketsRoute
+  '/package/$packageId': typeof PackagePackageIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRoute
   '/quote': typeof QuoteRoute
   '/tickets': typeof TicketsRoute
+  '/package/$packageId': typeof PackagePackageIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/quote': typeof QuoteRoute
   '/tickets': typeof TicketsRoute
+  '/package/$packageId': typeof PackagePackageIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/quote'
     | '/tickets'
+    | '/package/$packageId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/quote'
     | '/tickets'
+    | '/package/$packageId'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/quote'
     | '/tickets'
+    | '/package/$packageId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +144,7 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRoute
   QuoteRoute: typeof QuoteRoute
   TicketsRoute: typeof TicketsRoute
+  PackagePackageIdRoute: typeof PackagePackageIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TicketsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/package/$packageId': {
+      id: '/package/$packageId'
+      path: '/package/$packageId'
+      fullPath: '/package/$packageId'
+      preLoaderRoute: typeof PackagePackageIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +224,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRoute,
   QuoteRoute: QuoteRoute,
   TicketsRoute: TicketsRoute,
+  PackagePackageIdRoute: PackagePackageIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
