@@ -88,7 +88,7 @@ export function BottomNav() {
             key={to}
             to={to}
             className={`relative flex flex-col items-center gap-0.5 rounded-full py-1.5 text-[10px] font-medium transition ${
-              active ? "bg-accent font-bold text-primary" : "text-muted-foreground hover:text-primary"
+              active ? "bg-navy font-bold text-primary-foreground shadow-card" : "text-muted-foreground hover:text-primary"
             }`}
           >
             <Icon className="h-5 w-5" />
