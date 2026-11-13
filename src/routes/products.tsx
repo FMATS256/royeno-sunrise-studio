@@ -52,7 +52,7 @@ function Products() {
 
         <div className="mt-4 flex flex-wrap gap-1">
           {cats.map((c) => (
-            <Button variant="ghost" size="sm"
+            <Button variant={cat === c ? "default" : "ghost"} size="sm"
               key={c}
               onClick={() => setCat(c)}
               aria-pressed={cat === c}
