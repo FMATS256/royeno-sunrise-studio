@@ -24,7 +24,7 @@ function HomePage() {
       <header className="bg-navy px-5 pb-20 pt-6 text-primary-foreground">
         <div className="flex items-center justify-between">
           <Menu className="h-6 w-6" />
-          <div className="rounded-xl bg-card px-3 py-1"><img src={logo.url} alt="Royeno Solartech" className="h-10" /></div>
+          <div className="rounded-xl bg-card px-2 py-1"><img src={logo.url} alt="Royeno Solartech" className="h-14 w-44 object-cover" /></div>
           <Link to="/notifications"><Bell className="h-6 w-6" /></Link>
         </div>
         <h1 className="mt-5 text-2xl font-bold">Hello, Tendai!</h1>
