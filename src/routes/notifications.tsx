@@ -10,6 +10,8 @@ export const Route = createFileRoute("/notifications")({
       { name: "description", content: "Deals, installation updates and news." },
       { property: "og:title", content: "Notifications — Royeno Solartech" },
       { property: "og:description", content: "Stay up to date." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Notifications,

@@ -6,6 +6,8 @@ import { BottomNav, Phone, TopBar } from "@/components/AppShell";
 import inverter from "@/assets/inverter.jpg";
 import battery from "@/assets/battery.jpg";
 import panel from "@/assets/panel.jpg";
+import { PackageCatalog } from "@/components/PackageCatalog";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -14,6 +16,8 @@ export const Route = createFileRoute("/products")({
       { name: "description", content: "Inverters, batteries and solar panels." },
       { property: "og:title", content: "Our Products — Royeno Solartech" },
       { property: "og:description", content: "Shop solar equipment." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Products,
@@ -25,7 +29,7 @@ const items = [
   { name: "550W Mono Panel", sub: "High Efficiency Panel", price: 180, rating: "4.7 (64)", cat: "Panels", img: panel },
 ];
 
-const cats = ["All", "Inverters", "Batteries", "Panels"];
+const cats = ["All", "Solar", "Borehole", "Starlink", "Inverters", "Batteries", "Panels"];
 
 function Products() {
   const [cat, setCat] = useState("All");
@@ -34,7 +38,7 @@ function Products() {
 
   return (
     <Phone>
-      <TopBar title="Our Products" subtitle={`${items.length} items in stock`} />
+      <TopBar title="Products & Packages" subtitle="Solar • Borehole • Starlink" />
       <div className="flex-1 px-5 py-5">
         <label className="flex items-center gap-3 rounded-2xl border bg-card px-4 py-3.5 shadow-card transition focus-within:border-primary/45 focus-within:ring-4 focus-within:ring-primary/10">
           <Search className="h-4.5 w-4.5 shrink-0 text-muted-foreground" />
@@ -46,22 +50,23 @@ function Products() {
           />
         </label>
 
-        <div className="mt-4 flex rounded-full border bg-card p-1 shadow-card">
+        <div className="mt-4 flex flex-wrap gap-1">
           {cats.map((c) => (
-            <button
+            <Button variant={cat === c ? "default" : "ghost"} size="sm"
               key={c}
               onClick={() => setCat(c)}
               aria-pressed={cat === c}
-              className={`flex-1 rounded-full py-2 text-xs font-bold transition ${
+              className={`rounded-full py-2 text-xs font-bold transition ${
                 cat === c ? "bg-navy text-primary-foreground shadow-card" : "text-muted-foreground hover:text-primary"
               }`}
             >
               {c}
-            </button>
+            </Button>
           ))}
         </div>
 
         <div className="mt-4 space-y-3.5">
+          {(cat === "All" || cat === "Solar" || cat === "Borehole" || cat === "Starlink") && <PackageCatalog category={cat === "All" ? undefined : cat} query={q} />}
           {list.map((p) => (
             <div key={p.name} className="flex gap-3.5 rounded-3xl border bg-card p-3 shadow-card">
               <img src={p.img} alt={p.name} loading="lazy" className="h-28 w-24 shrink-0 rounded-2xl object-cover" />
@@ -82,7 +87,7 @@ function Products() {
               </div>
             </div>
           ))}
-          {list.length === 0 && (
+          {list.length === 0 && !["All", "Solar", "Borehole", "Starlink"].includes(cat) && (
             <p className="rounded-2xl border border-dashed px-4 py-10 text-center text-sm text-muted-foreground">
               No products match “{q}”.
             </p>

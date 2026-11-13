@@ -9,6 +9,8 @@ export const Route = createFileRoute("/tickets")({
       { name: "description", content: "Track your solar service requests." },
       { property: "og:title", content: "My Service Tickets — Royeno Solartech" },
       { property: "og:description", content: "Track repairs and installs." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Tickets,

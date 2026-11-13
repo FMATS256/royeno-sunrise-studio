@@ -10,6 +10,8 @@ export const Route = createFileRoute("/fault")({
       { name: "description", content: "Report a problem with your solar system." },
       { property: "og:title", content: "Report a Fault — Royeno Solartech" },
       { property: "og:description", content: "Fast solar support." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Fault,

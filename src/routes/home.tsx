@@ -14,6 +14,8 @@ import { BottomNav, Phone, SectionTitle } from "@/components/AppShell";
 import lockup from "@/assets/royeno-lockup-light.png.asset.json";
 import house from "@/assets/house-solar.jpg";
 import inverter from "@/assets/inverter.jpg";
+import { PackageCatalog } from "@/components/PackageCatalog";
+import { servicePackages } from "@/lib/packages";
 
 export const Route = createFileRoute("/home")({
   head: () => ({
@@ -22,6 +24,8 @@ export const Route = createFileRoute("/home")({
       { name: "description", content: "Your solar dashboard: quotes, faults, installs and packages." },
       { property: "og:title", content: "Home — Royeno Solartech" },
       { property: "og:description", content: "Your Solar Journey, One App." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: HomePage,
@@ -35,10 +39,7 @@ const actions: { to: "/quote" | "/fault" | "/tickets" | "/products" | "/notifica
   { to: "/notifications", label: "Contact Us", icon: PhoneIcon },
 ];
 
-const packages = [
-  { kva: "1KVA", price: "$450", note: "Small home" },
-  { kva: "3.5KVA", price: "$750", note: "Family home" },
-];
+const packages = servicePackages.filter((pkg) => pkg.category === "Solar");
 
 function HomePage() {
   return (
@@ -100,12 +101,12 @@ function HomePage() {
           </SectionTitle>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-3">
-          {packages.map(({ kva, price, note }) => (
-            <Link to="/quote" key={kva} className="group flex items-center gap-3 rounded-2xl border bg-card p-2.5 shadow-card transition hover:-translate-y-0.5 hover:border-primary/25">
-              <img src={inverter} alt="" loading="lazy" className="h-16 w-16 shrink-0 rounded-xl object-cover" />
+          {packages.map(({ id, name, price, note }) => (
+            <Link to="/quote" search={{ package: id }} key={id} className="group flex flex-col items-start gap-2 rounded-2xl border bg-card p-3 shadow-card transition hover:-translate-y-0.5 hover:border-primary/25">
+              <img src={inverter} alt="" loading="lazy" className="h-20 w-full rounded-xl object-cover" />
               <div className="min-w-0">
-                <p className="text-sm font-bold">{kva}</p>
-                <p className="text-sm font-bold text-primary">{price}</p>
+                <p className="text-sm font-bold">{name}</p>
+                <p className="text-sm font-bold text-primary">{price === null ? "Price on request" : `$${price.toLocaleString()}`}</p>
                 <p className="text-[10px] text-muted-foreground">{note}</p>
               </div>
               <span className="ml-auto grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-accent text-primary transition group-hover:bg-secondary group-hover:text-secondary-foreground">
@@ -114,6 +115,10 @@ function HomePage() {
             </Link>
           ))}
         </div>
+        <div className="mt-6 mb-3"><SectionTitle>Borehole Packages</SectionTitle></div>
+        <PackageCatalog category="Borehole" />
+        <div className="mt-6 mb-3"><SectionTitle>Starlink Packages</SectionTitle></div>
+        <PackageCatalog category="Starlink" />
       </div>
 
       <BottomNav />
