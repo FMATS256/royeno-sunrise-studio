@@ -8,7 +8,7 @@ import starlink from "@/assets/starlink-package.jpg";
 
 export const packageImages = { Solar: inverter, Borehole: borehole, Starlink: starlink };
 
-export function PackageCatalog({ category, query = "" }: { category?: PackageCategory; query?: string }) {
+export function PackageCatalog({ category, query = "" }: { category?: PackageCategory | undefined; query?: string }) {
   const items = servicePackages.filter((pkg) => (!category || pkg.category === category) && `${pkg.name} ${pkg.note}`.toLowerCase().includes(query.toLowerCase()));
   return (
     <div className="space-y-3">

@@ -33,7 +33,7 @@ export function packageTotal(pkg: ServicePackage, battery: boolean, installation
 }
 
 export function packageSearch(search: Record<string, unknown>): { package?: string } {
-  return typeof search.package === "string" && servicePackages.some((pkg) => pkg.id === search.package)
-    ? { package: search.package }
+  return typeof search['package'] === "string" && servicePackages.some((pkg) => pkg.id === search['package'])
+    ? { package: search['package'] }
     : {};
 }
