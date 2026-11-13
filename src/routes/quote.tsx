@@ -19,7 +19,7 @@ function Quote() {
   const [sel, setSel] = useState(0);
   const [battery, setBattery] = useState(true);
   const [install, setInstall] = useState(true);
-  const total = pkgs[sel].price + (battery ? 200 : 0) + (install ? 150 : 0);
+  const total = (pkgs[sel]?.price ?? 0) + (battery ? 200 : 0) + (install ? 150 : 0);
   return (
     <Phone>
       <TopBar title="Get a Quotation" />
