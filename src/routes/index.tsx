@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Phone } from "@/components/AppShell";
 import lockup from "@/assets/royeno-wordmark-light.png.asset.json";
 import mark from "@/assets/royeno-mark-light.png.asset.json";
+import panels from "@/assets/splash-panels.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,21 +29,17 @@ function Splash() {
   return (
     <Phone>
       <div className="bg-navy-deep relative flex flex-1 flex-col overflow-hidden">
-        {/* sun rays + glow behind the mark */}
-        <div className="rays pointer-events-none absolute inset-0 opacity-40" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[image:var(--glow-sun)] opacity-70" />
-        <div className="panel-grid pointer-events-none absolute inset-x-0 bottom-0 h-56 opacity-20" />
-        <div className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-secondary/30 blur-3xl" />
+        <img src={panels} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="splash-shade pointer-events-none absolute inset-0" />
 
         <div className="relative flex flex-1 flex-col items-center justify-center px-8 text-center">
           <div className="animate-pop relative">
-            <div className="animate-glow absolute inset-0 -m-7 rounded-full bg-sun/30 blur-2xl" />
-            <img src={mark.url} alt="Royeno Solartech" className="relative h-24 w-24 object-contain" />
+            <img src={mark.url} alt="Royeno Solartech" className="relative h-28 w-28 object-contain" />
           </div>
           <img
             src={lockup.url}
             alt="Royeno Solartech"
-            className="animate-fade-up mt-7 w-44 object-contain"
+            className="animate-fade-up mt-7 w-52 max-w-full object-contain"
             style={{ animationDelay: "0.18s" }}
           />
           <p
