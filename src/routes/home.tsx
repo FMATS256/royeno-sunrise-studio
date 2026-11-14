@@ -12,7 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { BottomNav, Phone, SectionTitle } from "@/components/AppShell";
-import lockup from "@/assets/royeno-lockup-light.png.asset.json";
+import lockup from "@/assets/royeno-official-logo.png.asset.json";
 import house from "@/assets/house-solar.jpg";
 import inverter from "@/assets/inverter.jpg";
 import { PackageCatalog } from "@/components/PackageCatalog";
@@ -50,7 +50,7 @@ function HomePage() {
       <header className="bg-navy relative px-5 pt-5 pb-6 @min-[600px]:px-8 text-primary-foreground">
         <div className="relative grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4">
           <Button asChild variant="ghost" size="icon" className="h-11 w-11 rounded-lg bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground"><Link to="/products" aria-label="Browse products"><Menu className="h-5 w-5" /></Link></Button>
-          <img src={lockup.url} alt="Royeno Solartech" className="h-11 w-full max-w-48 min-w-0 justify-self-center object-contain" />
+          <img src={lockup.url} alt="Royeno Solartech" className="h-14 w-full max-w-56 min-w-0 justify-self-center rounded-md bg-primary-foreground p-2 object-contain" />
           <Link to="/notifications" aria-label="Notifications" className="relative grid h-11 w-11 place-items-center rounded-lg bg-primary-foreground/10 transition hover:bg-primary-foreground/20">
             <Bell className="h-5 w-5" />
             <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-secondary ring-2 ring-primary" />
