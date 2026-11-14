@@ -16,6 +16,7 @@ import house from "@/assets/house-solar.jpg";
 import inverter from "@/assets/inverter.jpg";
 import { PackageCatalog } from "@/components/PackageCatalog";
 import { servicePackages } from "@/lib/packages";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/home")({
   head: () => ({
@@ -44,13 +45,11 @@ const packages = servicePackages.filter((pkg) => pkg.category === "Solar");
 function HomePage() {
   return (
     <Phone>
-      <header className="bg-navy relative px-5 pt-4 pb-16 text-primary-foreground">
+      <header className="bg-navy relative px-5 pt-5 pb-6 @min-[600px]:px-8 text-primary-foreground">
         <div className="relative grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4">
-          <button aria-label="Menu" className="grid h-9 w-9 place-items-center rounded-full bg-primary-foreground/15 transition hover:bg-primary-foreground/25">
-            <Menu className="h-5 w-5" />
-          </button>
-          <img src={lockup.url} alt="Royeno Solartech" className="h-10 w-full min-w-0 object-contain" />
-          <Link to="/notifications" aria-label="Notifications" className="relative grid h-9 w-9 place-items-center rounded-full bg-primary-foreground/15 transition hover:bg-primary-foreground/25">
+          <Button asChild variant="ghost" size="icon" className="h-11 w-11 rounded-lg bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground"><Link to="/products" aria-label="Browse products"><Menu className="h-5 w-5" /></Link></Button>
+          <img src={lockup.url} alt="Royeno Solartech" className="h-11 w-full max-w-48 min-w-0 justify-self-center object-contain" />
+          <Link to="/notifications" aria-label="Notifications" className="relative grid h-11 w-11 place-items-center rounded-lg bg-primary-foreground/10 transition hover:bg-primary-foreground/20">
             <Bell className="h-5 w-5" />
             <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-secondary ring-2 ring-primary" />
           </Link>
@@ -59,10 +58,10 @@ function HomePage() {
         <p className="relative text-sm text-primary-foreground/85">Your Solar Journey, One App.</p>
       </header>
 
-      <div className="relative -mt-10 px-4 pb-4">
-        <div className="relative overflow-hidden rounded-3xl shadow-lift">
-          <img src={house} alt="Home with solar panels" width={1024} height={768} className="h-44 w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent" />
+      <div className="relative px-4 pt-4 pb-6 @min-[600px]:px-8">
+        <div className="relative overflow-hidden rounded-lg">
+          <img src={house} alt="Home with solar panels" width={1024} height={768} className="h-44 w-full object-cover @min-[600px]:h-64" />
+          <div className="photo-shade absolute inset-0" />
           <div className="absolute inset-0 flex flex-col justify-center p-5 text-primary-foreground">
             <p className="text-xl leading-tight font-bold">
               Save More
@@ -79,14 +78,14 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-2.5">
+        <div className="mt-4 grid grid-cols-2 gap-2.5 @min-[600px]:grid-cols-5">
           {actions.map(({ to, label, icon: Icon }, i) => (
             <Link
               key={label}
               to={to}
-              className={`${i === actions.length - 1 ? "col-span-2" : ""} grid min-h-16 min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-xl border bg-card px-3 py-3 text-left shadow-card transition hover:-translate-y-0.5 hover:border-primary/25 active:translate-y-0`}
+              className={`${i === actions.length - 1 ? "col-span-2 @min-[600px]:col-span-1" : ""} grid min-h-16 min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-2 rounded-lg border bg-card px-3 py-3 text-left transition hover:border-primary/35 hover:bg-accent/40 @min-[600px]:grid-cols-1 @min-[600px]:justify-items-center @min-[600px]:text-center`}
             >
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent text-primary">
+               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent text-primary">
                 <Icon className="h-5 w-5" />
               </span>
               <span className="min-w-0 text-xs leading-snug font-bold text-primary">{label}</span>
@@ -95,14 +94,14 @@ function HomePage() {
         </div>
 
         <div className="mt-6">
-          <SectionTitle action={<Link to="/quote" className="text-xs font-bold text-secondary hover:underline">View All →</Link>}>
+          <SectionTitle action={<Link to="/products" className="text-xs font-bold text-primary hover:underline">View All →</Link>}>
             Our Solar Packages
           </SectionTitle>
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-3">
+        <div className="mt-3 grid grid-cols-2 gap-3 @min-[600px]:grid-cols-3 @min-[850px]:grid-cols-4">
           {packages.map(({ id, name, price, note }) => (
-            <Link to="/quote" search={{ package: id }} key={id} className="group flex flex-col items-start gap-2 rounded-2xl border bg-card p-3 shadow-card transition hover:-translate-y-0.5 hover:border-primary/25">
-              <img src={inverter} alt="" loading="lazy" className="h-20 w-full rounded-xl object-cover" />
+            <Link to="/package/$packageId" params={{ packageId: id }} key={id} className="group flex min-w-0 flex-col items-start gap-2 overflow-hidden rounded-lg border bg-card p-3 transition hover:border-primary/35 hover:shadow-card">
+              <img src={inverter} alt="" loading="lazy" className="aspect-[4/3] w-full rounded-md object-cover" />
               <div className="min-w-0">
                 <p className="text-sm font-bold">{name}</p>
                 <p className="text-sm font-bold text-primary">{price === null ? "Price on request" : `$${price.toLocaleString()}`}</p>

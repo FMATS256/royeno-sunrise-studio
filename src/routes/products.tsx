@@ -40,12 +40,13 @@ function Products() {
     <Phone>
       <TopBar title="Products & Packages" subtitle="Solar • Borehole • Starlink" />
       <div className="flex-1 px-5 py-5">
-        <label className="flex items-center gap-3 rounded-2xl border bg-card px-4 py-3.5 shadow-card transition focus-within:border-primary/45 focus-within:ring-4 focus-within:ring-primary/10">
+        <label className="flex items-center gap-3 rounded-lg border bg-card px-4 py-3.5 transition focus-within:border-primary/45 focus-within:ring-4 focus-within:ring-primary/10">
           <Search className="h-4.5 w-4.5 shrink-0 text-muted-foreground" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search products..."
+            aria-label="Search products"
             className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
           />
         </label>
@@ -56,7 +57,7 @@ function Products() {
               key={c}
               onClick={() => setCat(c)}
               aria-pressed={cat === c}
-              className={`min-h-11 shrink-0 rounded-xl px-3 py-2 text-xs font-bold transition ${
+              className={`min-h-11 shrink-0 rounded-lg px-3 py-2 text-xs font-bold transition ${
                 cat === c ? "bg-navy text-primary-foreground shadow-card" : "text-muted-foreground hover:text-primary"
               }`}
             >
@@ -67,8 +68,8 @@ function Products() {
 
         <div className="mt-4 space-y-3.5">
           {(cat === "All" || cat === "Solar" || cat === "Borehole" || cat === "Starlink") && <PackageCatalog category={cat === "All" ? undefined : cat} query={q} />}
-          {list.map((p) => (
-            <div key={p.name} className="grid grid-cols-[72px_minmax(0,1fr)] gap-3 rounded-xl border bg-card p-3 shadow-card min-[375px]:grid-cols-[88px_minmax(0,1fr)]">
+          <div className="grid gap-3 @min-[600px]:grid-cols-2">{list.map((p) => (
+            <div key={p.name} className="grid min-w-0 grid-cols-[80px_minmax(0,1fr)] gap-3 rounded-lg border bg-card p-3 min-[375px]:grid-cols-[96px_minmax(0,1fr)]">
               <img src={p.img} alt={p.name} loading="lazy" className="aspect-square w-full rounded-lg object-cover" />
               <div className="flex min-w-0 flex-1 flex-col">
                 <p className="text-sm font-bold leading-snug">{p.name}</p>
@@ -86,7 +87,7 @@ function Products() {
                 </Button>
               </div>
             </div>
-          ))}
+          ))}</div>
           {list.length === 0 && !["All", "Solar", "Borehole", "Starlink"].includes(cat) && (
             <p className="rounded-2xl border border-dashed px-4 py-10 text-center text-sm text-muted-foreground">
               No products match “{q}”.

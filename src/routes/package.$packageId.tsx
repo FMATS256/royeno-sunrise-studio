@@ -39,22 +39,22 @@ function PackagePage() {
   return (
     <Phone>
       <TopBar title={pkg.name} subtitle={`${pkg.category} package`} />
-      <div className="flex-1 space-y-5 px-5 py-5 pb-28">
-        <div className="overflow-hidden rounded-2xl border bg-card shadow-card">
-          <img src={packageImages[pkg.category]} alt={pkg.name} width={1024} height={1024} className="aspect-[16/10] w-full object-cover" />
-          <div className="p-4">
+      <div className="flex-1 space-y-6 px-5 py-5">
+        <div className="grid items-center gap-5 @min-[600px]:grid-cols-2">
+          <img src={packageImages[pkg.category]} alt={pkg.name} width={1024} height={1024} className="aspect-[4/3] w-full rounded-lg object-cover" />
+          <div className="min-w-0">
             <span className="rounded-full bg-secondary px-2.5 py-1 text-[11px] font-bold text-secondary-foreground">{pkg.category}</span>
-            <h2 className="mt-2 text-xl font-extrabold text-primary">{pkg.name}</h2>
-            <p className="mt-1 text-sm text-muted-foreground">{d.overview}</p>
+            <h2 className="mt-3 text-2xl font-bold text-primary">{pkg.name}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.overview}</p>
             <p className="mt-3 text-lg font-extrabold">{pkg.price === null ? "Price on request" : `From $${pkg.price.toLocaleString()}`}</p>
           </div>
         </div>
 
         <section>
           <h3 className="mb-2 text-sm font-bold">Specifications</h3>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-2 @min-[600px]:grid-cols-4">
             {d.specs.map((s) => (
-              <div key={s.label} className="rounded-xl border bg-card p-3 shadow-card">
+              <div key={s.label} className="min-w-0 rounded-lg bg-accent/60 p-3">
                 <p className="text-[11px] text-muted-foreground">{s.label}</p>
                 <p className="text-sm font-bold text-primary">{s.value}</p>
               </div>
@@ -66,12 +66,12 @@ function PackagePage() {
           <h3 className="mb-2 text-sm font-bold">What it powers</h3>
           <div className="flex flex-wrap gap-2">
             {d.powers.map((p) => (
-              <span key={p} className="inline-flex items-center gap-1 rounded-full border bg-card px-3 py-1.5 text-xs font-semibold"><Zap className="h-3.5 w-3.5 text-secondary" />{p}</span>
+              <span key={p} className="inline-flex min-w-0 items-center gap-1.5 text-xs font-semibold"><Zap className="h-3.5 w-3.5 shrink-0 text-secondary" />{p}</span>
             ))}
           </div>
         </section>
 
-        <section className="rounded-2xl border bg-card p-4 shadow-card">
+        <section className="border-t pt-5">
           <h3 className="mb-2 text-sm font-bold">What's included</h3>
           <ul className="space-y-2">
             {d.included.map((i) => (
@@ -85,7 +85,7 @@ function PackagePage() {
           <div><p className="text-sm font-bold">Warranty</p><p className="text-xs opacity-85">{d.warranty}</p></div>
         </div>
 
-        <div className="grid gap-2">
+        <div className="grid gap-2 @min-[600px]:grid-cols-2">
           <Button asChild size="lg" className="min-h-12"><Link to="/quote" search={{ package: pkg.id }}>Get Quotation <ArrowRight /></Link></Button>
           <Button asChild size="lg" variant="outline" className="min-h-12"><a href={wa} target="_blank" rel="noreferrer"><MessageCircle /> Enquire on WhatsApp</a></Button>
         </div>
