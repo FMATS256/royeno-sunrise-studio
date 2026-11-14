@@ -6,3 +6,5 @@
 - [x] Verify installation files and splash → login launch.
 - [x] Polish mobile spacing, touch controls and persistent navigation.
 - [x] Verify all screens on small and larger phones, and desktop.
+- [ ] Refine shared styling, home, sign-in and system catalog layouts.
+- [ ] Verify the refreshed demo flow on phones, tablet and desktop.

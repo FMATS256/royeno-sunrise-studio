@@ -72,7 +72,7 @@
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.5rem;
   --background: oklch(0.982 0.006 260);
   --foreground: oklch(0.24 0.05 265);
   --card: oklch(1 0 0);
@@ -116,8 +116,10 @@
   --gradient-navy-deep: linear-gradient(170deg, oklch(0.44 0.14 262) 0%, oklch(0.26 0.11 268) 52%, oklch(0.19 0.08 268) 100%);
   --gradient-sun: linear-gradient(135deg, oklch(0.8 0.16 68), oklch(0.64 0.19 42));
   --glow-sun: radial-gradient(60% 40% at 50% 0%, color-mix(in oklab, var(--sun) 42%, transparent), transparent 72%);
-  --shadow-card: 0 10px 26px -14px color-mix(in oklab, var(--primary) 34%, transparent);
-  --shadow-lift: 0 22px 48px -22px color-mix(in oklab, var(--primary) 48%, transparent);
+  --shadow-card: 0 3px 10px -5px color-mix(in oklab, var(--primary) 18%, transparent);
+  --shadow-lift: 0 16px 40px -20px color-mix(in oklab, var(--primary) 30%, transparent);
+  --gradient-photo: linear-gradient(90deg, color-mix(in oklab, var(--primary) 94%, transparent), color-mix(in oklab, var(--primary) 54%, transparent) 55%, transparent);
+  --gradient-splash-photo: linear-gradient(180deg, color-mix(in oklab, var(--primary) 96%, transparent) 15%, color-mix(in oklab, var(--primary) 88%, transparent) 65%, color-mix(in oklab, var(--primary) 65%, transparent));
   --shadow-sun: 0 12px 28px -12px color-mix(in oklab, var(--secondary) 55%, transparent);
 }
 
@@ -141,10 +143,21 @@
 
 .phone-shell {
   min-height: 100dvh;
-  overflow: clip;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
+
+.phone-shell > :not(nav):not(header) {
+  min-width: 0;
+}
+
+.phone-shell :is(input, textarea, select, a, button):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+.photo-shade { background-image: var(--gradient-photo); }
+.splash-shade { background-image: var(--gradient-splash-photo); }
 
 .app-bottom-nav {
   padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
@@ -168,8 +181,15 @@
 
 @media (min-width: 640px) {
   .phone-shell {
-    min-height: 880px;
+    min-height: calc(100dvh - 3rem);
     padding-block: 0;
+  }
+}
+
+@container (min-width: 600px) {
+  .phone-shell > .flex-1.px-5,
+  .phone-shell > form.px-5 {
+    padding: 2rem;
   }
 }
 
