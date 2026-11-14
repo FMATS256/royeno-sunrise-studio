@@ -8,3 +8,6 @@
 - [x] Verify all screens on small and larger phones, and desktop.
 - [x] Refine shared styling, home, sign-in and system catalog layouts.
 - [x] Verify the refreshed demo flow on phones, tablet and desktop.
+- [x] Extract official Harare contact details; the website’s branch directory returns 404, so other offices remain unverified.
+- [x] Add branches and contact pages with working navigation and contact links.
+- [x] Verify the new pages on phones and desktop.

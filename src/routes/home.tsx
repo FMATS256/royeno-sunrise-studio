@@ -4,6 +4,7 @@ import {
   Bell,
   CalendarDays,
   Calculator,
+  MapPin,
   Menu,
   Phone as PhoneIcon,
   ShoppingCart,
@@ -32,12 +33,13 @@ export const Route = createFileRoute("/home")({
   component: HomePage,
 });
 
-const actions: { to: "/quote" | "/fault" | "/tickets" | "/products" | "/notifications"; label: string; icon: LucideIcon }[] = [
+const actions: { to: "/quote" | "/fault" | "/tickets" | "/products" | "/contact" | "/branches"; label: string; icon: LucideIcon }[] = [
   { to: "/quote", label: "Get Quotation", icon: Calculator },
   { to: "/fault", label: "Report a Fault", icon: Wrench },
   { to: "/tickets", label: "Book Installation", icon: CalendarDays },
   { to: "/products", label: "View Products", icon: ShoppingCart },
-  { to: "/notifications", label: "Contact Us", icon: PhoneIcon },
+  { to: "/contact", label: "Contact Us", icon: PhoneIcon },
+  { to: "/branches", label: "Our Branches", icon: MapPin },
 ];
 
 const packages = servicePackages.filter((pkg) => pkg.category === "Solar");
@@ -78,12 +80,12 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-2.5 @min-[600px]:grid-cols-5">
-          {actions.map(({ to, label, icon: Icon }, i) => (
+        <div className="mt-4 grid grid-cols-2 gap-2.5 @min-[600px]:grid-cols-3">
+          {actions.map(({ to, label, icon: Icon }) => (
             <Link
               key={label}
               to={to}
-              className={`${i === actions.length - 1 ? "col-span-2 @min-[600px]:col-span-1" : ""} grid min-h-16 min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-2 rounded-lg border bg-card px-3 py-3 text-left transition hover:border-primary/35 hover:bg-accent/40 @min-[600px]:grid-cols-1 @min-[600px]:justify-items-center @min-[600px]:text-center`}
+              className="grid min-h-16 min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-2 rounded-lg border bg-card px-3 py-3 text-left transition hover:border-primary/35 hover:bg-accent/40"
             >
                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent text-primary">
                 <Icon className="h-5 w-5" />
