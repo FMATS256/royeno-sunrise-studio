@@ -3,7 +3,7 @@ import { Eye, EyeOff, Lock, User, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Field, Phone, PrimaryBtn } from "@/components/AppShell";
-import lockup from "@/assets/royeno-lockup.png.asset.json";
+import lockup from "@/assets/royeno-official-logo.png.asset.json";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -31,7 +31,7 @@ function Login() {
         }}
         className="mx-auto flex w-full max-w-md flex-1 flex-col px-5 pt-8 pb-6 min-[375px]:px-6 @min-[600px]:justify-center"
       >
-        <img src={lockup.url} alt="Royeno Solartech" className="mx-auto w-52 max-w-full object-contain" />
+        <img src={lockup.url} alt="Royeno Solartech" className="mx-auto w-72 max-w-full object-contain" />
         <h1 className="mt-8 text-center text-2xl font-bold tracking-tight">Client Sign In</h1>
         <p className="mt-1 text-center text-sm text-muted-foreground">Welcome back to Royeno Solartech</p>
 
