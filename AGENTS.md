@@ -34,3 +34,4 @@ use the editor.
 - Keep home-screen installation manifest-only with start_url `/` so launching shows splash before login; no app-shell service worker unless offline support is requested.
 - Keep viewport sizing, safe-area spacing and sticky navigation in the shared Phone shell so all screens adapt consistently without fixed mobile heights.
 - Use the shared shell as a fluid workspace with container-responsive content grids, not a desktop phone mockup, so tablet and desktop widths are usable.
+- Keep verified company contact details in one browser-safe module and reuse its call, map and WhatsApp link helpers so pages do not diverge.

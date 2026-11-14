@@ -4,6 +4,7 @@ import { BottomNav, Phone, TopBar } from "@/components/AppShell";
 import { packageImages } from "@/components/PackageCatalog";
 import { Button } from "@/components/ui/button";
 import { packageDetails, servicePackages } from "@/lib/packages";
+import { whatsappUrl } from "@/lib/contact";
 
 export const Route = createFileRoute("/package/$packageId")({
   loader: ({ params }) => {
@@ -35,7 +36,7 @@ export const Route = createFileRoute("/package/$packageId")({
 function PackagePage() {
   const { pkg } = Route.useLoaderData();
   const d = packageDetails(pkg);
-  const wa = `https://wa.me/?text=${encodeURIComponent(`Hi Royeno, I'm interested in the ${pkg.name}.`)}`;
+  const wa = whatsappUrl(`Hi Royeno, I'm interested in the ${pkg.name}.`);
   return (
     <Phone>
       <TopBar title={pkg.name} subtitle={`${pkg.category} package`} />
