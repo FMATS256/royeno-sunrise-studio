@@ -8,3 +8,6 @@
 - [x] Verify all screens on small and larger phones, and desktop.
 - [x] Refine shared styling, home, sign-in and system catalog layouts.
 - [x] Verify the refreshed demo flow on phones, tablet and desktop.
+- [ ] Extract official branch and contact details from Royeno’s website.
+- [ ] Add branches and contact pages with working navigation and contact links.
+- [ ] Verify the new pages on phones and desktop.
