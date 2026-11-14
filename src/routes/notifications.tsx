@@ -51,9 +51,9 @@ function Notifications() {
         </div>
       </div>
 
-      <ul className="mt-3 flex-1 space-y-2.5 px-5 pb-2">
+      <ul className="mt-3 grid flex-1 content-start gap-3 px-5 pb-5 @min-[600px]:grid-cols-2">
         {list.map(({ t, d, time, icon: Icon, tone, unread }) => (
-          <li key={t} className="flex gap-3.5 rounded-2xl border bg-card p-3.5 shadow-card transition hover:border-primary/20">
+          <li key={t} className="flex min-w-0 gap-3 rounded-lg border bg-card p-4 transition hover:border-primary/20">
             <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${tone}`}>
               <Icon className="h-5 w-5" />
             </span>
@@ -62,7 +62,7 @@ function Notifications() {
                 {t}
                 {unread && <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" />}
               </p>
-              <p className="text-xs text-muted-foreground">{d}</p>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{d}</p>
               <p className="mt-1 text-[11px] text-muted-foreground">{time}</p>
             </div>
           </li>

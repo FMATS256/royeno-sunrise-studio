@@ -29,7 +29,7 @@ function Tickets() {
     <Phone>
       <TopBar title="My Service Tickets" subtitle="1 open ticket" />
       <div className="flex-1 px-5 py-5">
-        <div className="rounded-2xl border bg-card p-4 shadow-card">
+        <div className="rounded-lg border bg-card p-5 shadow-card">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-2">
             <div className="min-w-0">
               <p className="break-all text-sm font-bold">#RST-2025-00124</p>
@@ -39,7 +39,7 @@ function Tickets() {
             <span className="bg-sun shrink-0 rounded-full px-3 py-1 text-[11px] font-bold text-secondary-foreground">In Progress</span>
           </div>
 
-          <ol className="mt-5">
+          <ol className="mt-6">
             {steps.map(([t, d, s], i) => (
               <li key={t} className="relative flex gap-3.5 pb-5 last:pb-0">
                 {i < steps.length - 1 && (

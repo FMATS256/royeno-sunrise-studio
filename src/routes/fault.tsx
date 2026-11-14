@@ -28,7 +28,7 @@ function Fault() {
           toast.success("Fault reported — ticket #RST-2025-00124");
           navigate({ to: "/tickets" });
         }}
-        className="flex flex-1 flex-col px-5 py-5"
+        className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-5 py-5"
       >
         <h2 className="text-base font-bold tracking-tight">Tell us about the problem</h2>
 

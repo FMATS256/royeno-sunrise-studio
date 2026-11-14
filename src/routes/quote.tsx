@@ -71,7 +71,7 @@ function Quote() {
         </div>
         <h2 className="mt-5 text-sm font-bold tracking-tight">Select Package</h2>
         <p className="text-xs text-muted-foreground">Choose a {category.toLowerCase()} package</p>
-        <div className="mt-3 space-y-2.5">
+        <div className="mt-3 grid grid-cols-1 gap-2.5 @min-[600px]:grid-cols-2">
           {pkgs.map((p) => {
             const on = sel === p.id;
             return (
@@ -79,16 +79,16 @@ function Quote() {
                 key={p.name}
                 onClick={() => setSel(p.id)}
                 aria-pressed={on}
-                className={`flex h-auto w-full items-center justify-start gap-3.5 whitespace-normal rounded-2xl border-2 bg-card p-3.5 text-left transition ${
+                className={`flex h-auto min-w-0 w-full items-center justify-start gap-3 whitespace-normal rounded-lg border-2 bg-card p-3.5 text-left transition ${
                   on ? "border-secondary bg-secondary/8 shadow-card" : "border-border hover:border-primary/25"
                 }`}
               >
-                <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl transition ${on ? "bg-sun text-secondary-foreground" : "bg-accent text-primary"}`}>
+                <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg transition ${on ? "bg-secondary text-secondary-foreground" : "bg-accent text-primary"}`}>
                   <Icon className="h-5 w-5" />
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm font-bold">{p.name}</span>
-                  <span className="block text-lg font-bold text-primary">{p.price === null ? "Price on request" : `$${p.price.toLocaleString()}`}</span>
+                  <span className="block text-base font-bold text-primary">{p.price === null ? "Price on request" : `$${p.price.toLocaleString()}`}</span>
                   <span className="block text-[11px] text-muted-foreground">{p.note}</span>
                 </span>
                 <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-full transition ${on ? "bg-primary text-primary-foreground" : "border-2 border-border"}`}>
