@@ -8,14 +8,16 @@ export type ServicePackage = {
   price: number | null;
 };
 
-// Existing demo prices stay unchanged; new packages await Royeno's prices.
+// Priced systems use Royeno's winter promotion flyer (Facebook, April 2026);
+// those prices include battery, accessories and installation. Others await Royeno's prices.
 export const servicePackages: ServicePackage[] = [
-  { id: "solar-1", name: "1KVA System", category: "Solar", note: "Small home", price: 450 },
+  { id: "solar-1", name: "1KVA System", category: "Solar", note: "Entertainment and lights", price: 580 },
   { id: "solar-3", name: "3KVA System", category: "Solar", note: "Solar power package", price: null },
-  { id: "solar-3-5", name: "3.5KVA System", category: "Solar", note: "Family home", price: 750 },
-  { id: "solar-4-2", name: "4.2KVA System", category: "Solar", note: "Larger home", price: 850 },
-  { id: "solar-6-2", name: "6.2KVA System", category: "Solar", note: "Solar power package", price: null },
-  { id: "solar-11", name: "11KVA System", category: "Solar", note: "Commercial use", price: 1650 },
+  { id: "solar-3-5", name: "3.5KVA System", category: "Solar", note: "Entertainment, lights, fridge and pump", price: 1200 },
+  { id: "solar-4-2", name: "4.2KVA System", category: "Solar", note: "Larger home", price: null },
+  { id: "solar-6-2", name: "6.2KVA System", category: "Solar", note: "2 TV sets, 2 fridges, pump and booster pump", price: 1800 },
+  { id: "solar-10-2", name: "10.2KVA System", category: "Solar", note: "2 TV sets, 2 fridges, pump and booster pump", price: 3900 },
+  { id: "solar-11", name: "11KVA System", category: "Solar", note: "Commercial use", price: null },
   { id: "solar-11-2", name: "11.2KVA System", category: "Solar", note: "Solar power package", price: null },
   { id: "solar-20", name: "20KVA System", category: "Solar", note: "Solar power package", price: null },
   { id: "solar-custom", name: "Custom Solar System", category: "Solar", note: "Other sizes on request", price: null },
@@ -27,9 +29,9 @@ export const servicePackages: ServicePackage[] = [
 
 export const packageCategories: PackageCategory[] = ["Solar", "Borehole", "Starlink"];
 
-export function packageTotal(pkg: ServicePackage, battery: boolean, installation: boolean): number | null {
-  if (pkg.price === null) return null;
-  return pkg.price + (pkg.category === "Solar" && battery ? 200 : 0) + (installation ? 150 : 0);
+export function packageTotal(pkg: ServicePackage, _battery: boolean, _installation: boolean): number | null {
+  // Flyer prices already include the lithium battery, accessories and installation.
+  return pkg.price;
 }
 
 export function packageSearch(search: Record<string, unknown>): { package?: string } {
@@ -46,11 +48,12 @@ export type PackageDetails = {
 };
 
 const solarSpecs: Record<string, [string, string, string, string[]]> = {
-  "solar-1": ["1 kVA", "2.5 kWh", "2 × 550W", ["Lights", "TV", "Wi-Fi router", "Phone charging"]],
+  "solar-1": ["1 kVA 12V hybrid", "100Ah 12.8V lithium", "1 × 440W mono", ["Entertainment", "Lights"]],
   "solar-3": ["3 kVA", "5 kWh", "4 × 550W", ["Lights", "Fridge", "TV", "Laptops", "Wi-Fi"]],
-  "solar-3-5": ["3.5 kVA", "5 kWh", "6 × 550W", ["Lights", "Fridge", "TV", "Laptops", "Small pump"]],
+  "solar-3-5": ["3.5 kVA 24V hybrid", "100Ah 25.6V lithium", "4 × 440W mono", ["Entertainment", "Lights", "Fridge", "Pump"]],
   "solar-4-2": ["4.2 kVA", "5–10 kWh", "8 × 550W", ["Lights", "Fridge & freezer", "TV", "Microwave", "Borehole pump"]],
-  "solar-6-2": ["6.2 kVA", "10 kWh", "10 × 550W", ["Whole home", "Borehole pump", "Microwave", "Kettle", "Iron"]],
+  "solar-6-2": ["6.2 kVA hybrid", "100Ah 51.2V lithium", "6 × 440W mono", ["2 TV sets", "2 fridges", "Pump", "Booster pump"]],
+  "solar-10-2": ["10.2 kVA 48V hybrid", "200Ah 51.2V lithium", "12 × 450W mono", ["2 TV sets", "2 fridges", "Pump", "Booster pump"]],
   "solar-11": ["11 kVA", "15 kWh", "16 × 550W", ["Office or shop", "Air conditioning", "Pumps", "Heavy appliances"]],
   "solar-11-2": ["11.2 kVA", "15 kWh", "18 × 550W", ["Large home", "Air conditioning", "Borehole pump", "Geyser timer"]],
   "solar-20": ["20 kVA", "30 kWh", "32 × 550W", ["Commercial site", "Machinery", "Cold rooms", "Multiple offices"]],
