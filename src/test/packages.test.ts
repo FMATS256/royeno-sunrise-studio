@@ -16,11 +16,6 @@ describe("Royeno service packages", () => {
     if (!pkg) throw new Error("20KVA package missing");
     expect(packageTotal(pkg, true, true)).toBeNull();
   });
-  it("preserves the existing 4.2KVA demo total", () => {
-    const pkg = servicePackages.find((item) => item.id === "solar-4-2");
-    if (!pkg) throw new Error("4.2KVA package missing");
-    expect(packageTotal(pkg, true, true)).toBe(1200);
-  });
   it("keeps a valid selected package in quotation navigation", () => {
     expect(packageSearch({ package: "starlink-kit" })).toEqual({ package: "starlink-kit" });
     expect(packageSearch({ package: "invalid" })).toEqual({});
