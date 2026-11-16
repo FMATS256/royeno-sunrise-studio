@@ -19,3 +19,9 @@ describe("official Royeno contact information", () => {
     ]);
   });
 });
+import { branches } from "@/lib/contact";
+describe("branches from the flyer", () => {
+  it("lists all nine branches", () => {
+    expect(branches.map((b) => b.name)).toEqual(["Harare","Gokwe","Chiredzi","Mt Darwin","Mvurwi","Mutoko","Rusape","Goromonzi","Gazebo"]);
+  });
+});
