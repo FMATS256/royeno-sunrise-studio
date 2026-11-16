@@ -13,3 +13,5 @@
 - [x] Verify the new pages on phones and desktop.
 - [x] Replace reconstructed logos and app icons with the supplied higher-resolution logo.
 - [x] Verify the updated logo on splash, sign-in and home across phone and desktop widths.
+- [x] Add an "Install the app" prompt on sign-in and home, with browser install dialog and manual steps fallback.
+- [x] Verify the install prompt on phone and desktop.

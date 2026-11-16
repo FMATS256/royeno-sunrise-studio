@@ -12,6 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { BottomNav, Phone, SectionTitle } from "@/components/AppShell";
+import { InstallBanner } from "@/components/InstallBanner";
 import lockup from "@/assets/royeno-official-logo-light.png.asset.json";
 import house from "@/assets/house-solar.jpg";
 import inverter from "@/assets/inverter.jpg";
@@ -61,6 +62,9 @@ function HomePage() {
       </header>
 
       <div className="relative px-4 pt-4 pb-6 @min-[600px]:px-8">
+        <div className="mb-4">
+          <InstallBanner />
+        </div>
         <div className="relative overflow-hidden rounded-lg">
           <img src={house} alt="Home with solar panels" width={1024} height={768} className="h-44 w-full object-cover @min-[600px]:h-64" />
           <div className="photo-shade absolute inset-0" />
