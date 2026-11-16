@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,12 +13,16 @@ import {
  */
 export function InstallBanner() {
   const { canPrompt, installed, ios, promptInstall } = useInstallPrompt();
+  // Render nothing until hydrated so server and client markup always match;
+  // installed/dismissed state only exists in the browser.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const [dismissed, setDismissed] = useState(
     () => typeof localStorage !== "undefined" && localStorage.getItem(INSTALL_DISMISS_KEY) === "1",
   );
   const [showSteps, setShowSteps] = useState(false);
 
-  if (installed || dismissed) return null;
+  if (!mounted || installed || dismissed) return null;
 
   const dismiss = () => {
     localStorage.setItem(INSTALL_DISMISS_KEY, "1");
