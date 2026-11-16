@@ -26,3 +26,10 @@ describe("Royeno service packages", () => {
     expect(packageSearch({ package: "invalid" })).toEqual({});
   });
 });
+
+describe("installation-inclusive flyer prices", () => {
+  it.each([["solar-1",580],["solar-3-5",1200],["solar-6-2",1800],["solar-10-2",3900]])("%s costs %d installed, with no add-ons", (id, price) => {
+    const pkg = servicePackages.find((p) => p.id === id)!;
+    expect(packageTotal(pkg, false, false)).toBe(price);
+  });
+});
