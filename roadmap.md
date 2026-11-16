@@ -12,4 +12,4 @@
 - [x] Add branches and contact pages with working navigation and contact links.
 - [x] Verify the new pages on phones and desktop.
 - [x] Replace reconstructed logos and app icons with the supplied higher-resolution logo.
-- [ ] Verify the updated logo on splash, sign-in and home across phone and desktop widths.
+- [x] Verify the updated logo on splash, sign-in and home across phone and desktop widths.
