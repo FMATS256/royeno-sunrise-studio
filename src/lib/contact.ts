@@ -30,7 +30,7 @@ export const branches: Branch[] = [
   { name: "Mvurwi", address: "Shop No. 7, Tavengwa Complex" },
   { name: "Mutoko", address: "Opposite Profeeds, next to Chicken Colley" },
   { name: "Rusape", address: "Opposite Econet Shop, next to Masamvi Complex" },
-  { name: "Goromonzi", address: "Woke Mutamba Shops" },
+  { name: "Goromonzi", address: "Woka Mutamba Shops" },
   { name: "Gazebo", address: null },
 ];
 

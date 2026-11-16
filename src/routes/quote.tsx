@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, Sun, Droplets, Satellite } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
 import { packageCategories, packageSearch, packageTotal, servicePackages, type PackageCategory } from "@/lib/packages";
 import { toast } from "sonner";
 import { BottomNav, Phone, PrimaryBtn, TopBar } from "@/components/AppShell";
@@ -31,11 +30,9 @@ function Quote() {
   const initial = servicePackages.find((pkg) => pkg.id === search.package) ?? servicePackages.find((pkg) => pkg.id === "solar-3-5") ?? servicePackages[0];
   const [category, setCategory] = useState<PackageCategory>(initial?.category ?? "Solar");
   const [sel, setSel] = useState(initial?.id ?? "solar-3-5");
-  const [battery, setBattery] = useState(true);
-  const [install, setInstall] = useState(true);
   const selected = servicePackages.find((pkg) => pkg.id === sel);
   const pkgs = servicePackages.filter((pkg) => pkg.category === category);
-  const total = selected ? packageTotal(selected, battery, install) : null;
+  const total = selected ? packageTotal(selected, true, true) : null;
   const Icon = categoryIcons[category];
 
   return (
@@ -99,46 +96,17 @@ function Quote() {
           })}
         </div>
 
-        {category === "Solar" && <>
-        <h2 className="mt-6 text-sm font-bold tracking-tight">Battery Option</h2>
-        <div className="mt-2 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-xl border bg-card px-4 py-3.5 shadow-card">
-          <span className="min-w-0 text-sm font-semibold">
-            Lithium Battery <span className="block text-xs font-normal text-muted-foreground">Recommended</span>
-          </span>
-          <span className="flex shrink-0 items-center gap-2">
-            <span className="text-sm font-bold text-primary">+ $200</span>
-            <Switch aria-label="Toggle battery" checked={battery} onCheckedChange={setBattery} />
-          </span>
-        </div>
-
-        </>}
-        {category === "Solar" && <>
-        <h2 className="mt-6 text-sm font-bold tracking-tight">Installation</h2>
-        <div className="mt-2 space-y-2">
-          {[
-            [true, "Include Installation", "+ $150"],
-            [false, "Supply Only", ""],
-          ].map(([v, l, p]) => (
-            <Button variant="ghost"
-              key={l as string}
-              onClick={() => setInstall(v as boolean)}
-              aria-pressed={install === v}
-              className={`grid h-auto min-h-12 w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 whitespace-normal rounded-xl border px-4 py-3 text-sm transition ${
-                install === v ? "border-primary/35 bg-accent font-semibold" : "border-border bg-card hover:border-primary/20"
-              }`}
-            >
-              <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 ${install === v ? "border-primary" : "border-border"}`}>
-                {install === v && <span className="h-2.5 w-2.5 rounded-full bg-primary" />}
-              </span>
-              <span className="min-w-0 text-left">{l as string}</span>
-              <span className="font-bold text-primary">{p as string}</span>
-            </Button>
-          ))}
-        </div>
-
-        </>}
+        {category === "Solar" && (
+          <div className="mt-6 flex items-start gap-3 rounded-xl border bg-accent px-4 py-3.5">
+            <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+            <p className="text-sm">
+              <span className="font-semibold">Installation included</span>
+              <span className="block text-xs text-muted-foreground">All prices include lithium battery, accessories and installation.</span>
+            </p>
+          </div>
+        )}
         <div className="mt-6 grid grid-cols-[minmax(0,1fr)_auto] gap-3 items-center rounded-xl bg-navy px-4 py-4 text-primary-foreground shadow-lift">
-          <span className="text-xs font-semibold uppercase">{total === null ? "Quotation" : "Estimated total"}</span>
+          <span className="text-xs font-semibold uppercase">{total === null ? "Quotation" : "Total (installed)"}</span>
           <span className="text-right text-lg font-bold">{total === null ? "Price on request" : `$${total.toLocaleString()}`}</span>
         </div>
         <div className="mt-4">

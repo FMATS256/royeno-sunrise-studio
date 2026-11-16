@@ -16,13 +16,15 @@ describe("Royeno service packages", () => {
     if (!pkg) throw new Error("20KVA package missing");
     expect(packageTotal(pkg, true, true)).toBeNull();
   });
-  it("preserves the existing 4.2KVA demo total", () => {
-    const pkg = servicePackages.find((item) => item.id === "solar-4-2");
-    if (!pkg) throw new Error("4.2KVA package missing");
-    expect(packageTotal(pkg, true, true)).toBe(1200);
-  });
   it("keeps a valid selected package in quotation navigation", () => {
     expect(packageSearch({ package: "starlink-kit" })).toEqual({ package: "starlink-kit" });
     expect(packageSearch({ package: "invalid" })).toEqual({});
+  });
+});
+
+describe("installation-inclusive flyer prices", () => {
+  it.each([["solar-1",580],["solar-3-5",1200],["solar-6-2",1800],["solar-10-2",3900]])("%s costs %d installed, with no add-ons", (id, price) => {
+    const pkg = servicePackages.find((p) => p.id === id)!;
+    expect(packageTotal(pkg, false, false)).toBe(price);
   });
 });
