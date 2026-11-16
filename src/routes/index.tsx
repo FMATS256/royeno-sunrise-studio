@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { Phone } from "@/components/AppShell";
-import logo from "@/assets/royeno-official-logo.png.asset.json";
+import logo from "@/assets/royeno-official-logo-light.png.asset.json";
 import panels from "@/assets/splash-panels.jpg";
 
 export const Route = createFileRoute("/")({
@@ -32,7 +32,7 @@ function Splash() {
         <div className="splash-shade pointer-events-none absolute inset-0" />
 
         <div className="relative flex flex-1 flex-col items-center justify-center px-8 text-center">
-          <div className="animate-pop relative w-full max-w-sm bg-primary-foreground px-5 py-6">
+          <div className="animate-pop relative w-full max-w-sm px-2">
             <img src={logo.url} alt="Royeno Solartech" className="relative w-full object-contain" />
           </div>
           <p
