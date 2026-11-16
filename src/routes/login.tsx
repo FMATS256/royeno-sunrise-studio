@@ -3,6 +3,7 @@ import { Eye, EyeOff, Lock, User, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Field, Phone, PrimaryBtn } from "@/components/AppShell";
+import { InstallBanner } from "@/components/InstallBanner";
 import lockup from "@/assets/royeno-official-logo.png.asset.json";
 
 export const Route = createFileRoute("/login")({
@@ -67,6 +68,10 @@ function Login() {
         >
           Create Account
         </Link>
+
+        <div className="mt-5">
+          <InstallBanner />
+        </div>
 
         <div className="mt-auto pt-8 text-center">
           <p className="text-xs font-semibold leading-relaxed text-primary">
